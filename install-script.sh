@@ -14,6 +14,7 @@ cat << 'EOF' > "$GIT_HOOKS_PATH"
 #!/bin/sh
 
 # Check local user configuration
+echo "Global Hooks: Local user checking..."
 local_user=$(git config --local user.name)
 local_email=$(git config --local user.email)
 
