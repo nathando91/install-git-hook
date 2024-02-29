@@ -9,9 +9,8 @@ mkdir -p "$GIT_HOOKS_DIR"
 # Define the path to the pre-commit hook within the global git hooks directory
 GIT_HOOKS_PATH="$GIT_HOOKS_DIR/pre-commit"
 
-# Use a here-document to provide the content of the pre-commit hook script
-cat << 'EOF' > "$GIT_HOOKS_PATH"
-#!/bin/sh
+# Provide the content of the pre-commit hook script
+HOOK_SCRIPT_CONTENT='#!/bin/sh
 
 # Check local user configuration
 local_user=$(git config --local user.name)
@@ -31,12 +30,15 @@ if [ -z "$local_user" ] || [ -z "$local_email" ]; then
     echo "git config --local user.name \"\$(git config --global user.name)\""
     echo "git config --local user.email \"\$(git config --global user.email)\""
     echo ""
-    echo "To enter new information, run the following commands and replace 'Your Name' and 'email@example.com' with your information:"
+    echo "To enter new information, run the following commands and replace \'Your Name\' and \'email@example.com\' with your information:"
     echo "git config --local user.name \"Your Name\""
     echo "git config --local user.email \"email@example.com\""
     exit 1
 fi
-EOF
+'
+
+# Create or overwrite the pre-commit hook with the given content
+echo "$HOOK_SCRIPT_CONTENT" > "$GIT_HOOKS_PATH"
 
 # Set execute permission for the pre-commit hook
 chmod +x "$GIT_HOOKS_PATH"
