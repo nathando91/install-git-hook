@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Định nghĩa URL của script hook
-HOOK_SCRIPT_URL="https://example.com/user/repo/install-git-hook.sh"
+HOOK_SCRIPT_URL="https://github.com/nathando91/install-git-hook/blob/main/hook.sh"
 
 # Đường dẫn tới thư mục git hooks cục bộ
 # Thay đổi "your_repo" bằng đường dẫn tới repo git cục bộ của bạn
