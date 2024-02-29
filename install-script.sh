@@ -36,7 +36,7 @@ if [ -z "$local_user" ] || [ -z "$local_email" ]; then
     echo "git config --local user.email \"email@example.com\""
     exit 1
 fi
-'
+
 
 # Create or overwrite the pre-commit hook with the given content
 echo "$HOOK_SCRIPT_CONTENT" > "$GIT_HOOKS_PATH"
