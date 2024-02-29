@@ -14,10 +14,10 @@ cat << 'EOF' > "$GIT_HOOKS_PATH"
 #!/bin/sh
 
 # Check local user configuration
-local_user=\$(git config --local user.name)
-local_email=\$(git config --local user.email)
+local_user=$(git config --local user.name)
+local_email=$(git config --local user.email)
 
-if [ -z "\$local_user" ] || [ -z "\$local_email" ]; then
+if [ -z "$local_user" ] || [ -z "$local_email" ]; then
     echo "Warning: Git local user configuration is not set."
     echo "Using global Git user information for all repositories and projects may not be safe."
     echo "This could potentially expose personal or sensitive information in certain work environments, or when client requirements necessitate specific user information for each project."
