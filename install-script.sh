@@ -15,8 +15,12 @@ cat << 'EOF' > "$GIT_HOOKS_PATH"
 
 # Check local user configuration
 echo "Global Hooks: Local user checking..."
+
 local_user="$(git config --local user.name)"
 local_email="$(git config --local user.email)"
+
+global_user="$(git config --global user.name)"
+global_email="$(git config --global user.email)"
 
 if [ -z "$local_user" ] || [ -z "$local_email" ]; then
     echo "Warning: Git local user configuration is not set."
@@ -29,8 +33,8 @@ if [ -z "$local_user" ] || [ -z "$local_email" ]; then
     echo "2. Enter new information for the Git local user configuration."
     echo ""
     echo "To use the global Git user information, run the following commands:"
-    echo "git config --local user.name \"\$(git config --global user.name)\""
-    echo "git config --local user.email \"\$(git config --global user.email)\""
+    echo "git config --local user.name "\"$global_user\"
+    echo "git config --local user.email "\"$global_email\"
     echo ""
     echo "To enter new information, run the following commands and replace 'Your Name' and 'email@example.com' with your information:"
     echo "git config --local user.name \"Your Name\""
